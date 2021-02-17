@@ -15,6 +15,8 @@ yarn install
 yarn no-day
 ```
 
+The UI is served on port 9000.
+
 ## Run the UI on another local repo
 
 Currently we don't provide an installer yet, but you can:

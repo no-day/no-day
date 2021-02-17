@@ -47,6 +47,8 @@ features:
   darkMode:
     enabled: true
     default: false
+  social:
+    github: https://github.com/no-day/no-day
 search:
   enabled: true
   startComponent: icon

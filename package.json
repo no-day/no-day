@@ -8,5 +8,7 @@
     "packages/*/*"
   ],
   "devDependencies": {},
-  "scripts": {}
+  "scripts": {
+    "docs": "yarn workspace @no-day/docs build"
+  }
 }

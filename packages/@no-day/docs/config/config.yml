@@ -1,0 +1,54 @@
+metadata:
+  name: no-day docs
+  short_name: no-day docs
+  description: ''
+  language: en
+  url: 'https://no-day.github.io'
+  pathPrefix: /
+  gaTrackingId: null
+  favicon: /assets/favicon.png
+  themeColor: '#0066cc'
+header:
+  enabled: true
+  logo: /assets/logo.png
+  links: []
+sidebar:
+  ignoreIndex: false
+  forcedNavOrder: []
+  expanded: []
+  groups: []
+  links: []
+  poweredBy: {}
+  enabled: true
+pwa:
+  enabled: false
+  manifest:
+    icon: /assets/logo.png
+    display: minimal-ui
+    crossOrigin: anonymous
+features:
+  editOnRepo:
+    editable: true
+    location: 'https://github.com/no-day/no-day'
+    type: github
+  search:
+    enabled: false
+    indexName: docs
+    showStats: true
+    pagination:
+      enabled: true
+  rss:
+    enabled: false
+    showIcon: true
+    copyright: ''
+    categories: []
+    matchRegex: ^/
+    outputPath: /rss.xml
+  darkMode:
+    enabled: true
+    default: false
+search:
+  enabled: true
+  startComponent: icon
+  pagination:
+    enabled: true

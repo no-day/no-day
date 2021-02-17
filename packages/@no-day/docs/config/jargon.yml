@@ -1,0 +1,5 @@
+# This is default jargon that you can use. Feel free to change it. See: https://boogi.netlify.app/editing/rich_content/abbreviations
+'no-day docs':
+  name: no-day docs
+  long_name: no-day docs
+  description: This app was created with <a href="https://github.com/filipowm/boogi-cli">BooGi CLI</a>

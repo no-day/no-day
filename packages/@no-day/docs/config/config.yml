@@ -28,7 +28,7 @@ pwa:
     crossOrigin: anonymous
 features:
   editOnRepo:
-    editable: true
+    editable: false
     location: "https://github.com/no-day/no-day"
     type: github
   search:

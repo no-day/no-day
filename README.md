@@ -2,6 +2,8 @@
 
 After midnight of every day. Technically it's the next day, but doesn't the next day really start when you wake up in the morning?
 
+[Docs](https://no-day.github.io/no-day)
+
 ## Early prototype
 
 This repo contains a very early prototype of the no-day graph editor.

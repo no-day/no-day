@@ -4,7 +4,7 @@ After midnight of every day. Technically it's the next day, but doesn't the next
 
 ## Early prototype
 
-This repo contains a very ealry prototype of the no-day graph editor.
+This repo contains a very early prototype of the no-day graph editor.
 
 ## Run the UI on the current repo
 
@@ -19,7 +19,7 @@ The UI is served on port 9000.
 
 ## Run the UI on another local repo
 
-Currently we don't provide an installer yet, but you can:
+Currently we don't provide an installer, but you can:
 
 ```
 ln -fs $PWD/node_modules/.bin/no-day ~/bin/no-day

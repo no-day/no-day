@@ -1,13 +1,13 @@
 metadata:
   name: no-day docs
   short_name: no-day docs
-  description: ''
+  description: ""
   language: en
-  url: 'https://no-day.github.io'
+  url: "https://no-day.github.io/no-day"
   pathPrefix: /
   gaTrackingId: null
   favicon: /assets/favicon.png
-  themeColor: '#0066cc'
+  themeColor: "#0066cc"
 header:
   enabled: true
   logo: /assets/logo.png
@@ -29,7 +29,7 @@ pwa:
 features:
   editOnRepo:
     editable: true
-    location: 'https://github.com/no-day/no-day'
+    location: "https://github.com/no-day/no-day"
     type: github
   search:
     enabled: false
@@ -40,7 +40,7 @@ features:
   rss:
     enabled: false
     showIcon: true
-    copyright: ''
+    copyright: ""
     categories: []
     matchRegex: ^/
     outputPath: /rss.xml

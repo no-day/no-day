@@ -1,0 +1,11 @@
+{
+  "name": "@no-day/graph",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "fp-ts": "^2.9.5",
+    "@no-day/debug-log": "*"
+  }
+}

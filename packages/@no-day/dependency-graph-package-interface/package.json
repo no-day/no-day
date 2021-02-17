@@ -1,0 +1,10 @@
+{
+  "name": "@no-day/dependency-graph-package-interface",
+  "main": "src/index.d.ts",
+  "module": "src/index.d.ts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@no-day/npm.package-type": "*"
+  }
+}

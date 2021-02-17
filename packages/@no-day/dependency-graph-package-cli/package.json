@@ -1,0 +1,14 @@
+{
+  "name": "@no-day/dependency-graph-package-cli",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": {
+    "no-day": "./scripts/run.sh"
+  },
+  "dependencies": {
+    "@no-day/dependency-graph-package-server": "*",
+    "@no-day/dependency-graph-package-client": "*"
+  }
+}

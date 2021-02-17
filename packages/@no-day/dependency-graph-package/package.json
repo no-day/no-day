@@ -1,0 +1,17 @@
+{
+  "name": "@no-day/dependency-graph-package",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@aivenio/tsc-output-parser": "^2.1.1",
+    "@no-day/dependency-graph-types": "*",
+    "@no-day/graph": "*",
+    "@no-day/dependency-graph-package-interface": "*",
+    "fp-ts": "^2.9.5"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@no-day/dependency-graph-package-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@aivenio/tsc-output-parser": "^2.1.1",
+    "@no-day/dependency-graph-package-interface": "*",
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.11",
+    "chokidar": "^3.5.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fp-ts": "^2.9.5",
+    "glob": "^7.1.6",
+    "socket.io": "^2.3.0",
+    "ts-node": "^9.1.1"
+  },
+  "bin": {
+    "signa-pkg-deps": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "start": "ts-node src/index.ts",
+    "develop": "ts-node-dev --respawn src/index.ts"
+  },
+  "devDependencies": {
+    "@types/socket.io": "^2.1.13",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  }
+}

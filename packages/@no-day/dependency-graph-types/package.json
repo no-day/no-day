@@ -1,0 +1,13 @@
+{
+  "name": "@no-day/dependency-graph-types",
+  "version": "1.0.0",
+  "main": "src/index.d.ts",
+  "module": "src/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@no-day/graph": "*"
+  }
+}

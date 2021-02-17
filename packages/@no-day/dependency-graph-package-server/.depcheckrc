@@ -1,0 +1,6 @@
+{
+  "ignores": [
+    "@aivenio/tsc-output-parser",
+    "ts-node"
+  ]
+}

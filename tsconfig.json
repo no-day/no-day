@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.settings.json",
+  "files": [],
+  "compilerOptions": { "noEmit": true },
+  "references": [],
+  "include": [
+    "./packages/*/*/src/**/*.ts",
+    "./packages/*/*/src/**/*.tsx",
+    "./packages/*/*/src/**/*.d.ts"
+  ],
+  "exclude": ["./node_modules/**/*", "packages/*/.cache", "packages/*/dist"]
+}

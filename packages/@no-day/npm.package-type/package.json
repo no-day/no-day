@@ -1,0 +1,10 @@
+{
+  "name": "@no-day/npm.package-type",
+  "version": "1.0.0",
+  "main": "src/index.d.ts",
+  "module": "src/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  }
+}

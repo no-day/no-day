@@ -1,0 +1,6 @@
+{
+  "ignores": [
+    "@no-day/dependency-graph-package-server",
+    "@no-day/dependency-graph-package-client"
+  ]
+}

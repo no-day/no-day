@@ -18,6 +18,14 @@ type Import = {
   path?: string;
 };
 
+type YarnWorkspacesInfo = Record<string, unknown>;
+
+type PackageJson = { name: string; dependencies?: unknown };
+
+type WithPackagePath = { packagePath: string };
+
+type WithWorkspaces = { workspaces: string[] };
+
 const importToPackage: (_: Import) => string = ({ scope, name }) =>
   scope ? `${scope}/${name}` : name;
 
@@ -37,8 +45,6 @@ const getImports = (src: string): Import[] => {
 
   return matches;
 };
-
-type PackageJson = { dependencies?: unknown };
 
 const packageNameToAddCmd: (_: {
   isWorkspace: (_: string) => boolean;
@@ -63,8 +69,6 @@ const handleImport = ({
   cp.execSync(`yarn add '${addCmd}'`, { cwd: packagePath });
 };
 
-type WithPackagePath = { packagePath: string };
-
 const handleFile = ({
   packagePath,
   workspaces,
@@ -80,8 +84,6 @@ const handleFile = ({
   pipe(imports, array.map(handleImport({ workspaces, packagePath })));
 };
 
-type WithWorkspaces = { workspaces: string[] };
-
 const removeDependencies = (packagePath: string) => {
   const pathPackageJson = path.join(packagePath, "package.json");
 
@@ -96,6 +98,19 @@ const removeDependencies = (packagePath: string) => {
   );
 };
 
+// const renamePackage = ({ packagePath }: WithPackagePath) => {
+//   const pathPackageJson = path.join(packagePath, "package.json");
+
+//   const { name } = pipe(
+//     fs.readFileSync(pathPackageJson),
+//     _ => _.toString(),
+//     JSON.parse,
+//     _ => _ as PackageJson
+//   );
+
+//   //fs.renameSync(packagePath, )
+// };
+
 const handlePackage = ({ workspaces }: WithWorkspaces) => (
   packagePath: string
 ): void => {
@@ -107,8 +122,6 @@ const handlePackage = ({ workspaces }: WithWorkspaces) => (
 
   pipe(srcFiles, array.map(handleFile({ packagePath, workspaces })));
 };
-
-type YarnWorkspacesInfo = Record<string, unknown>;
 
 const getWorkspaces = (): YarnWorkspacesInfo =>
   pipe(

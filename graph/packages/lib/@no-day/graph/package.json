@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "license": "MIT",
   "dependencies": {
-    "@no-day/edge-id": "*"
+    "@no-day/edge-id": "*",
+    "@no-day/edge-internal": "*"
   }
 }

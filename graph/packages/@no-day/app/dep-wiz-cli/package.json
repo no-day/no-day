@@ -1,0 +1,14 @@
+{
+  "name": "@no-day/dep-wiz-cli",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "bin": {
+    "dep-wiz": "src/index.ts"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@no-day/dep-wiz": "*",
+    "ts-node": "^9.1.1"
+  }
+}

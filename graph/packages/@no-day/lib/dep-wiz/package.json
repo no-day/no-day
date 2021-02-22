@@ -1,0 +1,10 @@
+{
+  "name": "@no-day/dep-wiz",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "fp-ts": "^2.9.5",
+    "glob": "^7.1.6"
+  }
+}

@@ -18,6 +18,10 @@ type Import = {
   path?: string;
 };
 
+type ConfigFile = {
+  ignore: string[];
+};
+
 type YarnWorkspacesInfo = Record<string, { location: string }>;
 
 type PackageJson = { name: string; dependencies?: unknown };
@@ -26,7 +30,11 @@ type WithPackagePath = { packagePath: string };
 
 type WithWorkspaces = { workspaces: string[] };
 
+type WithConfigFile = { configFile: ConfigFile };
+
 const exclude = ["fs", "path", "child_process"];
+
+const configFilePath = "dep-wiz.config.json";
 
 const sourceGlob = "src/**/*.ts"; // TODO
 
@@ -42,7 +50,7 @@ const getImports = (src: string): Import[] => {
   while ((result = regex.exec(src))) {
     matches.push({
       scope: result[1],
-      name: result[2],
+      name: result[2] || "",
       path: result[3],
     });
   }
@@ -98,6 +106,7 @@ const removeDependencies = (packagePath: string) => {
     _ => _ as PackageJson,
     _ => ({ ..._, dependencies: [] }),
     _ => JSON.stringify(_, null, 2),
+    _ => `${_}\n`,
     _ => fs.writeFileSync(pathPackageJson, _)
   );
 };
@@ -134,20 +143,52 @@ const renamePackage = ({ packagePath }: WithPackagePath) => {
     packageJson,
     _ => ({ ..._, name: `${scope}/${newName}` }),
     _ => JSON.stringify(_, null, 2),
+    _ => `${_}\n`,
     _ => fs.writeFileSync(pathPackageJson, _)
   );
 };
 
-const handlePackage = ({ workspaces }: WithWorkspaces) => (
-  packagePath: string
-): void => {
+const depCheck = ({ packagePath }: WithPackagePath) =>
+  cp.spawnSync("yarn", ["depcheck"], { cwd: packagePath });
+
+const handlePackage = ({
+  workspaces,
+  configFile,
+}: WithWorkspaces & WithConfigFile) => (packagePath: string): void => {
   console.log(`PACKAGE: ${packagePath}`);
+
+  const pathPackageJson = path.join(packagePath, "package.json");
+
+  const { name } = pipe(
+    fs.readFileSync(pathPackageJson),
+    _ => _.toString(),
+    JSON.parse,
+    _ => _ as PackageJson
+  );
+
+  if (pipe(configFile.ignore, array.elem(eqString)(name))) {
+    console.log("ignore");
+    return;
+  }
+
+  const { status: statusBefore } = depCheck({ packagePath });
+
+  if (statusBefore === 0) {
+    console.log("ok");
+    return;
+  }
 
   const srcFiles = glob.sync(`${packagePath}/${sourceGlob}`);
 
   removeDependencies(packagePath);
 
   pipe(srcFiles, array.map(handleFile({ packagePath, workspaces })));
+
+  const { status: statusAfter } = depCheck({ packagePath });
+
+  if (statusAfter !== 0) {
+    console.log("Dependencies don't check after generation!");
+  }
 };
 
 const getWorkspaces = (): YarnWorkspacesInfo =>
@@ -159,6 +200,19 @@ const getWorkspaces = (): YarnWorkspacesInfo =>
   );
 
 export const main = () => {
+  const configFile = (() => {
+    try {
+      return pipe(
+        fs.readFileSync(configFilePath),
+        _ => _.toString(),
+        JSON.parse,
+        _ => _ as ConfigFile
+      );
+    } catch (e) {
+      return { ignore: [] };
+    }
+  })();
+
   pipe(
     getWorkspaces(),
     record.collect((k, _) => _.location),
@@ -176,5 +230,5 @@ export const main = () => {
     flow(array.chain(glob.sync))
   );
 
-  pipe(packagePaths, array.map(handlePackage({ workspaces })));
+  pipe(packagePaths, array.map(handlePackage({ workspaces, configFile })));
 };

@@ -1,5 +1,5 @@
 {
-  "name": "@no-day/dep-wiz-cli",
+  "name": "@no-day/dependency-wizard-cli",
   "version": "1.0.0",
   "main": "src/index.ts",
   "license": "MIT",
@@ -8,6 +8,6 @@
   },
   "scripts": {},
   "dependencies": {
-    "@no-day/dep-wiz": "*"
+    "@no-day/dependency-wizard": "*"
   }
 }
